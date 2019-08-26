@@ -1,15 +1,13 @@
 const products = require('./products.json')
 
 const getProducts = (req, res, next) => {
-    var price = req.query.price;
-    if(price >= price){
-        console.log(products.price)
-        var priceFilter = products.filter(item => item.price >= +price)
+    if(req.query.price){
+        const priceFilter = products.filter(item => item.price >= +req.query.price)
         res.json(priceFilter)
     }else {
-        res.json(priceFilter)
+        res.json(products)
     }
 }
 
 
-module.exports = getProducts
+module.exports = getProducts;
